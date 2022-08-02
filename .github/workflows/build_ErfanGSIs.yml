@@ -56,6 +56,7 @@ jobs:
          run: |
               cd $GITHUB_WORKSPACE/ErfanGSIs/output
               mkdir final
+              cp GSI.img final
               zip -r final/GSI.zip ./*
        
        - name: Upload GSI to WeTransfer
@@ -63,12 +64,5 @@ jobs:
               cd $GITHUB_WORKSPACE/ErfanGSIs/output
               curl -sL https://git.io/file-transfer | sh
               ./transfer wet ./final/GSI.zip
-       - name: Upload to Release‌‌...
-         uses: ncipollo/release-action@v1.8.0
-         with:
-           artifacts: "Test"
-           tag: "Test"
-           bodyFile: "Test"
-           token: $GITHUB_WORKSPACE/ErfanGSIs/output/final/GSI.zip
        
             

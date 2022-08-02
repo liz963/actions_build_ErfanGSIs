@@ -51,18 +51,28 @@ jobs:
          run: |
               cd  $GITHUB_WORKSPACE/ErfanGSIs
               sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
+              touch info.txt
        
        - name: Zip GSI  
          run: |
               cd $GITHUB_WORKSPACE/ErfanGSIs/output
               mkdir final
-              cp GSI.img final
               zip -r final/GSI.zip ./*
        
-       - name: Upload GSI to WeTransfer
+       - name: Upload GSI
          run: |
               cd $GITHUB_WORKSPACE/ErfanGSIs/output
               curl -sL https://git.io/file-transfer | sh
               ./transfer wet ./final/GSI.zip
+
+       - name: Upload to Release‌‌...
+         uses: ncipollo/release-action@v1.8.0
+         with:
+           artifacts: "$GITHUB_WORKSPACE/ErfanGSIs/output/final/GSI.zip""
+           tag: "Test"
+           bodyFile: "GITHUB_WORKSPACE/ErfanGSIs/info.txt"
+           token: ${{ secrets.GITHUB_TOKEN }}
+
        
+
             

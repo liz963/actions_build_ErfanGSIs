@@ -65,6 +65,7 @@ jobs:
               curl -sL https://git.io/file-transfer | sh
               ./transfer wet ./final/GSI.zip
 
+
        - name: Upload to Release‌‌...
          uses: ncipollo/release-action@v1.8.0
            with:

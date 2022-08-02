@@ -14,8 +14,8 @@ on:
     types: [started]
     
 env:
-  ROM_URL: http://bigota.d.miui.com/20.4.27/miui_MIMIX3_20.4.27_8f7879221b_10.0.zip
-  ROM_NAME: MIUI
+  ROM_URL: https://www.coolapk.com/link?url=https%3A%2F%2Fsysupwsdl.vivo.com.cn%2Fupgrade%2Fupload%2FUpdateFiles%2F20201215073327bbcb7082271631abb20e994c8a02cb86.zip
+  ROM_NAME: Generic
   BUILD_TYPE: ab
   TZ: Asia/Shanghai
 

@@ -67,11 +67,11 @@ jobs:
 
        - name: Upload to Release‌‌...
          uses: ncipollo/release-action@v1.8.0
-         with:
-           artifacts: "$GITHUB_WORKSPACE/ErfanGSIs/output/final/GSI.zip""
-           tag: "GITHUB_WORKSPACE/ErfanGSIs/info.txt"
-           bodyFile: "GITHUB_WORKSPACE/ErfanGSIs/info.txt"
-           token: ${{ secrets.GITHUB_TOKEN }}
+           with:
+             artifacts: "$GITHUB_WORKSPACE/ErfanGSIs/output/final/GSI.zip""
+             tag: "GITHUB_WORKSPACE/ErfanGSIs/info.txt"
+             bodyFile: "GITHUB_WORKSPACE/ErfanGSIs/info.txt"
+             token: ${{ secrets.GITHUB_TOKEN }}
 
        
 

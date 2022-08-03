@@ -17,6 +17,7 @@ on:
     
 env:
   TZ: Asia/Shanghai
+  BUILD_TYPE: AB
 
 jobs:
   build:
@@ -48,7 +49,7 @@ jobs:
        - name: Download Stock Rom & Generate GSI
          run: |
               cd  $GITHUB_WORKSPACE/ErfanGSIs
-              sudo bash ./url2GSI.sh -c --AB ${{ github.event.inputs.ROM_URL }} ${{ github.event.inputs.ROM_NAME }}
+              sudo bash ./url2GSI.sh -c --$BUILD_TYPE ${{ github.event.inputs.ROM_URL }} ${{ github.event.inputs.ROM_NAME }}
               touch info.txt
        
        - name: Zip GSI  

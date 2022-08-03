@@ -48,7 +48,7 @@ jobs:
        - name: Download Stock Rom & Generate GSI
          run: |
               cd  $GITHUB_WORKSPACE/ErfanGSIs
-              sudo bash ./url2GSI.sh -c --ab ${{ github.event.inputs.ROM_URL }} ${{ github.event.inputs.ROM_NAME }}
+              sudo bash ./url2GSI.sh -c --AB ${{ github.event.inputs.ROM_URL }} ${{ github.event.inputs.ROM_NAME }}
               touch info.txt
        
        - name: Zip GSI  

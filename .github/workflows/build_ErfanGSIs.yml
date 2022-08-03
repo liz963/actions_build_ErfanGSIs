@@ -11,17 +11,11 @@ on:
         description: 'ROM_NAME'
         required: true
         default: 'Generic'
-      BUILD_TYPE: 
-        description: 'BUILD_TYPE(--ab or --aonly)
-        required: true
-        default: '--ab'
+
   watch:
     types: [started]
     
 env:
-  ROM_URL: https://www.coolapk.com/link?url=https%3A%2F%2Fsysupwsdl.vivo.com.cn%2Fupgrade%2Fupload%2FUpdateFiles%2F20201215073327bbcb7082271631abb20e994c8a02cb86.zip
-  ROM_NAME: Generic
-  BUILD_TYPE: ab
   TZ: Asia/Shanghai
 
 jobs:
@@ -49,13 +43,12 @@ jobs:
          run: |
               cd $GITHUB_WORKSPACE/ErfanGSIs
               mkdir ./output
-              sudo apt install python3
               sudo bash ./setup.sh
        
        - name: Download Stock Rom & Generate GSI
          run: |
               cd  $GITHUB_WORKSPACE/ErfanGSIs
-              sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
+              sudo bash ./url2GSI.sh -c --ab ${{ github.event.inputs.ROM_URL }} ${{ github.event.inputs.ROM_NAME }}
               touch info.txt
        
        - name: Zip GSI  

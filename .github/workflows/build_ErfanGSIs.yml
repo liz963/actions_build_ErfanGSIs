@@ -1,4 +1,4 @@
-names: build_ErfanGSIs
+name: build_ErfanGSIs
 
 on:
 #  release:

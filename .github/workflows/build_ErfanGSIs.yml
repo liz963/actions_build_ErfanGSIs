@@ -1,15 +1,20 @@
 name: build_ErfanGSIs
 
 on:
-#  release:
-#    types: [published]
-#  push:
-#    branches:
-#      - master
-#    paths:
-#      - '.config'
-#  schedule:
-#    - cron: 0 8 * * 5
+  workflow_dispatch:
+    inputs:
+      ROM_URL:
+        description: 'ROM_URL'
+        required: true
+        default: 'https://hugeota.d.miui.com/21.5.31/miui_TUCANA_21.5.31_cb42ec9bed_11.0.zip'
+      ROM_NAME:
+        description: 'ROM_NAME'
+        required: true
+        default: 'Generic'
+      BUILD_TYPE: 
+        description: 'BUILD_TYPE(--ab or --aonly)
+        required: true
+        default: '--ab'
   watch:
     types: [started]
     

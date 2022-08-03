@@ -71,9 +71,8 @@ jobs:
          with: |
              artifacts: "${{ github.workspace }}/ErfanGSIs/output/final/GSI.zip"
              tag: "${{ github.workspace }}/ErfanGSIs/info.txt"
-             bodyFile: "GITHUB_${{ github.workspace }}/ErfanGSIs/info.txt"
+             bodyFile: "${{ github.workspace }}/ErfanGSIs/info.txt"
              token: ${{ secrets.GITHUB_TOKEN }}
-
        
 
             

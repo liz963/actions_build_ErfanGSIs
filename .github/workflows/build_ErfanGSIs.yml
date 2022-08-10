@@ -10,6 +10,7 @@ env:
   ROM_NAME: MIUI
   BUILD_TYPE: ab
   TZ: Asia/Shanghai
+  UPLOAD_TYPE: BOTH
 
 
 jobs:
@@ -42,15 +43,22 @@ jobs:
        
        - name: Download Stock Rom & Generate GSI
          run: |
-              cd  ErfanGSIs
+              cd ErfanGSIs
               sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
        
-       - name: Pack GSI  
+       - name: Upload GSI to WeTransfer
+         if: $UPLOAD_TYPE == 'wetransfer' || $UPLOAD_TYPE == 'both'
+         run: |
+              cd ErfanGSIs/output
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer wet ./*
+              
+       
+       - name: Upload GSI to Release...
+         if: $UPLOAD_TYPE == 'release' || $UPLOAD_TYPE == 'both'
          run: |
               rename *.img $ROM_NAME.img *.img
               if [ $(ls -l $ROM_NAME.img | awk '{print $5}') -gt 2147483647 ]; then tar cvzpf - $ROM_NAME.img
-       
-       - name: Upload GSI to Release...
          uses: ncipollo/release-action@v1.8.6
          with:
            artifacts: ErfanGSIs/output/*

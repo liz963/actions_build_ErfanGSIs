@@ -47,7 +47,8 @@ jobs:
        
        - name: Pack GSI  
          run: |
-              if [ $(ls -l *.img | awk '{print $5}') -gt 2147483647 ]; then tar cvzpf - *.img
+              rename *.img $ROM_NAME.img *.img
+              if [ $(ls -l $ROM_NAME.img | awk '{print $5}') -gt 2147483647 ]; then tar cvzpf - $ROM_NAME.img
        
        - name: Upload GSI to Release...
          uses: ncipollo/release-action@v1.8.6

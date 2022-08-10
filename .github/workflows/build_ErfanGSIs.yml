@@ -37,8 +37,8 @@ jobs:
          run: |
               cd ErfanGSIs
               mkdir ./output
+              sudo apt install python-pip
               sudo bash ./setup.sh
-              sudo apt install go
        
        - name: Download Stock Rom & Generate GSI
          run: |

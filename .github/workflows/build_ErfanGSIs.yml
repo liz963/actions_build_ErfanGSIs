@@ -10,7 +10,7 @@ env:
   ROM_NAME: MIUI
   BUILD_TYPE: ab
   TZ: Asia/Shanghai
-  UPLOAD_TYPE: wetransfer
+  REPACK_NAME: gsi.zip
 
 
 jobs:
@@ -45,6 +45,11 @@ jobs:
          run: |
               cd ErfanGSIs
               sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
+       - name: Pack GSI
+         run: |
+              tar -zcvf ErfanGSIs/output/GSI.tar.gz ErfanGSIs/output
+              cd ErfanGSIs/output
+              split -d -b 1024m - GSI.tar.gz
        
        - name: Upload GSI
          run: |

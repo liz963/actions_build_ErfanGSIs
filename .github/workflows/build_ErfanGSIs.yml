@@ -10,7 +10,7 @@ env:
   ROM_NAME: MIUI
   BUILD_TYPE: ab
   TZ: Asia/Shanghai
-  UPLOAD_TYPE: BOTH
+  UPLOAD_TYPE: wetransfer
 
 
 jobs:
@@ -52,13 +52,15 @@ jobs:
               cd ErfanGSIs/output
               curl -sL https://git.io/file-transfer | sh
               ./transfer wet ./*
-              
-       
-       - name: Upload GSI to Release...
+        
+       - name: Ready to Upload to Release
          if: $UPLOAD_TYPE == 'release' || $UPLOAD_TYPE == 'both'
          run: |
+              sudo apt install rename
               rename *.img $ROM_NAME.img *.img
               if [ $(ls -l $ROM_NAME.img | awk '{print $5}') -gt 2147483647 ]; then tar cvzpf - $ROM_NAME.img
+       - name: Upload GSI to Release...
+         if: $UPLOAD_TYPE == 'release' || $UPLOAD_TYPE == 'both'
          uses: ncipollo/release-action@v1.8.6
          with:
            artifacts: ErfanGSIs/output/*

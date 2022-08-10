@@ -46,8 +46,7 @@ jobs:
               cd ErfanGSIs
               sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
        
-       - name: Upload GSI to WeTransfer
-         if: $UPLOAD_TYPE == 'wetransfer' || $UPLOAD_TYPE == 'both'
+       - name: Upload GSI
          run: |
               cd ErfanGSIs/output
               curl -sL https://git.io/file-transfer | sh

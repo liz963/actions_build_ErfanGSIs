@@ -56,7 +56,7 @@ jobs:
          with:
            artifacts: ErfanGSIs/output/system.img
            name: ErfanGSI
-           tag: xiaoxinSGSI-ab-Android10-${{ github.run_number }}
+           tag: ErfanGSI
            token: ${{ secrets.GITHUB_TOKEN }}
 
 

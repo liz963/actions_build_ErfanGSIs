@@ -54,8 +54,8 @@ jobs:
        - name: Upload GSI to Release...
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: ErfanGSIs/output/final/*
-           name: ErfanGSI-$ROM_NAME
+           artifacts: ErfanGSIs/output/system.img
+           name: ErfanGSI
            tag: xiaoxinSGSI-ab-Android10-${{ github.run_number }}
            token: ${{ secrets.GITHUB_TOKEN }}
 

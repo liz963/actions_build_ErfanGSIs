@@ -47,7 +47,7 @@ jobs:
               sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
        - name: Pack GSI
          run: |
-              tar -zcf ErfanGSIs/output/GSI.tar.gz ErfanGSIs/output
+              zip -r ErfanGSIs/output/GSI.zip ErfanGSIs/output/*
               cd ErfanGSIs/output
               split -d -b 1024m - GSI.tar.gz
        

@@ -47,3 +47,7 @@ Pixel
 
 ## 声明 ##
 此项目克隆了 [together08](https://github.com/together08) 的 [actions_build_ErfanGSIs](https://github.com/together08/actions_build_ErfanGSIs) 项目，并对其做了一些更正与删减，使其可以正常运行
+
+## 联系 ##
+> 酷安：mi20210630
+邮箱：shanghaizhouwanli@163.com

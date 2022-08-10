@@ -45,11 +45,9 @@ jobs:
               cd  ErfanGSIs
               sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
        
-       - name: Zip GSI  
+       - name: Pack GSI  
          run: |
-              cd ErfanGSIs/output
-              mkdir final
-              zip -r final/GSI.zip ./*
+              if [ $(ls -l *.img | awk '{print $5}') -gt 2147483647 ]; then tar cvzpf - *.img
        
        - name: Upload GSI to Release...
          uses: ncipollo/release-action@v1.8.6

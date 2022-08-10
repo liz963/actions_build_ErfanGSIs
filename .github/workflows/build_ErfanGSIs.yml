@@ -28,34 +28,34 @@ jobs:
          
        - name: Fix exit
          run: |
-              sed -i 's/\|\| exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
-              sed -i 's/exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
+              sed -i 's/\|\| exit 1//g' ErfanGSIs/url2GSI.sh
+              sed -i 's/exit 1//g' ErfanGSIs/url2GSI.sh
        
        - name: Setting up requirements
          run: |
-              cd $GITHUB_WORKSPACE/ErfanGSIs
+              cd ErfanGSIs
               mkdir ./output
               sudo bash ./setup.sh
               sudo apt install go
        
        - name: Download Stock Rom & Generate GSI
          run: |
-              cd  $GITHUB_WORKSPACE/ErfanGSIs
+              cd  ErfanGSIs
               sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
-              touch info.txt
        
        - name: Zip GSI  
          run: |
-              cd $GITHUB_WORKSPACE/ErfanGSIs/output
+              cd ErfanGSIs/output
               mkdir final
               zip -r final/GSI.zip ./*
        
-       - name: Upload to Release‌‌...
-         uses: RomanosTrechlis/actions-go-release@v1.0
-         with: 
-           release_name: $ROM_NAME
-           goos: ubuntu-22.04
-           goarch: "$GITHUB_WORKSPACE/ErfanGSIs/output/final/*"
+       - name: Upload GSI to Release...
+         uses: ncipollo/release-action@v1.8.6
+         with:
+           artifacts: ErfanGSIs/output/final/*
+           name: ErfanGSI-$ROM_NAME
+           tag: xiaoxinSGSI-ab-Android10-${{ github.run_number }}
+           token: ${{ secrets.GITHUB_TOKEN }}
 
 
             

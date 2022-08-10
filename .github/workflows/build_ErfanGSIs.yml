@@ -49,7 +49,7 @@ jobs:
          run: |
               zip -r ErfanGSIs/output/GSI.zip ErfanGSIs/output/*
               cd ErfanGSIs/output
-              split -d -b 1024m - GSI.tar.gz
+              split -d -b 1024m - GSI.zip
        
        - name: Upload GSI
          run: |

@@ -18,7 +18,7 @@ tar xzvf 文件.tar.gz                   # 解压缩文件
 ```
 
 ## 附：ErfanGSI支持的ROM ##
-> ROM_NAME里填一摸一样的，下的ROM也要一样；Generic是（类）原生的意思
+> ROM_NAME里填一摸一样的，下的ROM也要一样；Generic是（类）原生的意思，任何系统都可以使用Generic参数
 ### 9 Pie： ### 
 > ColorOS	
 Flyme

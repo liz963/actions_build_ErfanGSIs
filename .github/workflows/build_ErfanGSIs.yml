@@ -50,7 +50,7 @@ jobs:
               zip -r ErfanGSIs/output/GSI.zip ErfanGSIs/output/*
               cd ErfanGSIs/output
               sudo apt install split
-              split -d -b 1024m - GSI.zip
+              split -d -b 1024m GSI.zip Splited_
        
        - name: Upload GSI
          run: |

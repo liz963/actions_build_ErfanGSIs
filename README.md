@@ -12,7 +12,7 @@
 因GitHub Release无法上传超过2GB的文件，所以此项目把超过2GB的文件进行拆分，如你的项目运行完后发现release里的文件被拆分成了多个（后缀名为zip00，zip01这种），请用Linux系统将其合并
 
 ```
-cat 文件1 文件2 ...>文件.tar.gz         # 对文件进行合并(eg:cat MIUI.img00 MIUI.img01>MIUI.img.tar.gz)
+cat 文件1 文件2 ...>文件.tar.gz         # 对文件进行合并(eg:cat MIUI.zip00 MIUI.zip01>MIUI.img.tar.gz)
 tar xzvf 文件.tar.gz                   # 解压缩文件
 ```
 

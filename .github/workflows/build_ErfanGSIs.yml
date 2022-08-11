@@ -6,7 +6,7 @@ on:
     
     
 env:
-  ROM_URL: https:cdn-ota.blackshark.com/PRS-A0/20220705103646-penrose-deltaota_2022-07-04_2022-03-05_c1a5d2e850.zip
+  ROM_URL: https://www.coolapk.com/link?url=https://elixir69.elixirop69.workers.dev/0:/WHYRED-darklighter-ota-signed_by_xiaomi_By_ARIJIT-SAHA.zip
   ROM_NAME: Generic
   BUILD_TYPE: ab
   TZ: Asia/Shanghai

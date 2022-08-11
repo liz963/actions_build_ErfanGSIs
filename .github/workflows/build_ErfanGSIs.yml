@@ -6,7 +6,7 @@ on:
     
     
 env:
-  ROM_URL: https://www.coolapk.com/link?url=http%3A%2F%2Fcdn-ota.blackshark.com%2FKSR-A0%2F20220725183814-kaiser-deltaota_2022-07-25_2022-07-12_68e5b27218.zip
+  ROM_URL: https://49-89-65-227.d.123pan.cn:30443/123-132/8ce9bd35/1811787656-0/8ce9bd3544d518b4500d4ab47ab42484?v=1&t=1660231854&s=544d87390ea0eb05bfd51548dd97dec3&filename=%EF%BC%88%E7%BA%BF%E5%88%B7%E5%8C%85%EF%BC%89joyui12.5_a11_V60_timeim_8ce9bd.7z&d=9d6a7810
   ROM_NAME: Generic
   BUILD_TYPE: ab
   TZ: Asia/Shanghai

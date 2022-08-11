@@ -53,10 +53,13 @@ jobs:
               split -b 1024m GSI.zip Splited_
        
        - name: Upload GSI
-         run: |
-              cd ErfanGSIs/output
-              curl -sL https://git.io/file-transfer | sh
-              ./transfer wet ./*
+         uses: ncipollo/release-action@v1.8.6
+         with:
+           artifacts: ErfanGSIs/output/*
+           name: ErfanGSI
+           tag: ErfanGSI-${{ github.run_number }}
+           token: ${{ secrets.GITHUB_TOKEN }}
+              
         
  
 

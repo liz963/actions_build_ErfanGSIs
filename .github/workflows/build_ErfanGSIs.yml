@@ -6,8 +6,8 @@ on:
     
     
 env:
-  ROM_URL: https://060enccmsnnlea610ktf0ssldqmnjpqotah4j0v25atfrhmhc0gvvs6c.qc.x.bsgslb.cn:10443/xdispatch65565077deb8532e/bigota.d.miui.com/V12.0.1.0.PDEMIXM/miui_MIMIX2Global_V12.0.1.0.PDEMIXM_64006b3102_9.0.zip?bsreqid=b9201e8b0914383b016c9194c8a2d546
-  ROM_NAME: MIUI
+  ROM_URL: https://www.coolapk.com/link?url=http%3A%2F%2Fcdn-ota.blackshark.com%2FKSR-A0%2F20220725183814-kaiser-deltaota_2022-07-25_2022-07-12_68e5b27218.zip
+  ROM_NAME: Generic
   BUILD_TYPE: ab
   TZ: Asia/Shanghai
   REPACK_NAME: GSI.zip

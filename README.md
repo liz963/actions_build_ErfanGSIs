@@ -19,34 +19,48 @@ tar xzvf 文件.tar.gz                   # 解压缩文件
 
 ## 附：ErfanGSI支持的ROM ##
 > ROM_NAME里填一摸一样的，下的ROM也要一样；Generic是（类）原生的意思，任何系统都可以使用Generic参数
-### 9 Pie： ### 
-> ColorOS	
-Flyme
-Generic
-MIUI	
-Moto	
-Nubia	
-OneUI	
-OxygenOS	
-Pixel	
-Xperia	
-ZUI	
-ZenUI
-### 10 Q： ###
-> Generic
-MIUI	
-OxygenOS (氢OS HydrogenOS 的海外版，两者跑 gsi 都用 OxygenOS 代替)
-Pixel
-Flyme
-### 11 R： ##
-> Generic	
-Pixel
-### 12 S： ##
-> Generic	
-Pixel
+### 安卓9： ### 
+> ColorOS
+	
+> Flyme
 
-## 声明 ##
-此项目克隆了 [together08](https://github.com/together08) 的 [actions_build_ErfanGSIs](https://github.com/together08/actions_build_ErfanGSIs) 项目，并对其做了一些更正与删减，使其可以正常运行
+> Generic
+
+> MIUI	
+
+> Moto	
+
+> Nubia	
+
+> OneUI	
+
+> OxygenOS	
+
+> Pixel	
+
+> Xperia	
+
+> ZUI	
+
+> ZenUI
+### 安卓10： ###
+> Generic
+
+> MIUI
+	
+> OxygenOS (氢OS HydrogenOS 的海外版，两者跑 gsi 都用 OxygenOS 代替)
+
+> Pixel
+
+> Flyme
+### 安卓11： ##
+> Generic
+	
+> Pixel
+### 安卓12： ##
+> Generic
+	
+> Pixel
 
 ## 联系 ##
 > 酷安：mi20210630

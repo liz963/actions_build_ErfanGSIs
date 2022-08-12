@@ -50,7 +50,8 @@ jobs:
               zip -r ErfanGSIs/output/GSI.zip ErfanGSIs/output/*
               cd ErfanGSIs/output
               mkdir upload
-              split -d -b 2048m - GSI.zip
+               tar -cpzf - GSI.zip | split -d -b 2048m - ./GSI.zip
+
 
        - name: Upload GSI
          uses: ncipollo/release-action@v1.8.6

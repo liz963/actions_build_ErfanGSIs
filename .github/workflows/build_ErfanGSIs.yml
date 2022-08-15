@@ -49,8 +49,7 @@ jobs:
          run: |
               zip -r ErfanGSIs/output/GSI.zip ErfanGSIs/output/*
               cd ErfanGSIs/output
-              mkdir upload
-               tar -cpzf - GSI.zip | split -d -b 2048m - ./GSI.zip
+              tar -cpzf - GSI.zip | split -d -b 2048m - ./GSI.zip
 
 
        - name: Upload GSI

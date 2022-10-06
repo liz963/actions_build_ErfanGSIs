@@ -1,67 +1,82 @@
-name: build_ErfanGSIs
+name: ErfanGSIs-build-AB(debug)
 
 on: 
-  watch:
-    types: [ started ]
-    
-    
-env:
-  ROM_URL: https://www.coolapk.com/link?url=https://elixir69.elixirop69.workers.dev/0:/WHYRED-darklighter-ota-signed_by_xiaomi_By_ARIJIT-SAHA.zip
-  ROM_NAME: Generic
-  BUILD_TYPE: ab
-  TZ: Asia/Shanghai
-  REPACK_NAME: GSI.zip
-
-
+  workflow_dispatch:
+    inputs:
+      ROM_URL:
+        description: 'ROM_URL'
+        required: true
+      ROM_TYPE:
+        description: 'ROM_TYPE'
+        required: true
+      RELEASES_NAME: 
+        description: 'RELEASES_NAME'
+        required: true
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
        - name: Checkout
          uses: actions/checkout@master
-           
+
        - name: Initialization environment
          run: |
             sudo -E apt-get -qq install git wget
        
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/erfanoabdi/ErfanGSIs.git ErfanGSIs
+         run: | 
+            git clone --recurse-submodules https://github.com/erfanoabdi/ErfanGSIs.git ErfanGSIs
          
        - name: Fix exit
          run: |
               sed -i 's/\|\| exit 1//g' ErfanGSIs/url2GSI.sh
               sed -i 's/exit 1//g' ErfanGSIs/url2GSI.sh
-       
-       - name: Setting up requirements
-         run: |
-              cd ErfanGSIs
-              mkdir ./output
-              sudo apt install python3-pip
-              sudo bash ./setup.sh
-       
-       - name: Download Stock Rom & Generate GSI
-         run: |
-              cd ErfanGSIs
-              sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
-       - name: Pack GSI
-         run: |
-              zip -r ErfanGSIs/output/GSI.zip ErfanGSIs/output/*
-              cd ErfanGSIs/output
-              tar -cpzf - GSI.zip | split -d -b 2048m - ./GSI.zip
-
-
-       - name: Upload GSI
-         uses: ncipollo/release-action@v1.8.6
-         with:
-           artifacts: ErfanGSIs/output/*
-           name: ErfanGSI
-           tag: ErfanGSI-${{ github.run_number }}
-           token: ${{ secrets.GITHUB_TOKEN }}
               
-        
- 
-
-
-            
+       - name: Install Python
+         run: |
+           sudo apt-get purge python
+           wget https://www.python.org/ftp/python/3.10.6/Python-3.10.6.tgz
+           tar -zxvf Python-3.10.6.tgz
+           cd Python-3.10.6
+           ./configure
+           make
+           sudo make install  
+       
+       - name: Setting up ErfanGSI requirements
+         run: |
+              cd $GITHUB_WORKSPACE/ErfanGSIs
+              mkdir ./output
+              sudo apt-get update
+              sudo apt-get install unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller device-tree-compiler liblzma-dev python-pip brotli liblz4-tool gawk aria2
+              pip3 install backports.lzma pycrypto protocol
+              pip3 install --upgrade protobuf==3.20.0
+       - name: Download Stock Rom
+         run: |
+              cd ErfanGSIs
+              sudo bash ./url2GSI.sh -c --ab "${{ github.event.inputs.ROM_URL }}" "${{ github.event.inputs.ROM_TYPE }}"
+              
+       - name: 7Zip GSI  
+         run: |
+              cd ErfanGSIs/output
+              mkdir upload
+              7za a -t7z -r GSI.7z ./*
+              if [[ $(du -sb "GSI.7z" | awk '{print $1}') -gt 2097152000 ]];then
+                  echo -e "split packaging..."
+                  tar -cpzf - "GSI.7z" | split -d -b 1024m - "upload/GSI.7z"
+              else
+                  mv GSI.7z upload/
+              fi
+              ls "upload"   
+              
+       - name: Upload GSI to Releases
+         uses: actions/upload-artifact@v3
+         with:
+           name: ${{github.event.inputs.RELEASES_NAME}}
+           path: ErfanGSIs/output/upload/*
+           
+       - name: Upload GSI to Wetrancefer
+         run: |
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer wet ErfanGSIs/output/upload/*

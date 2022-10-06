@@ -9,7 +9,7 @@ on:
       ROM_TYPE:AB
         description: 'ROM_TYPE'
         required: true
-      RELEASES_NAME: ColorOS
+      RELEASES_NAME:ColorOS
         description: 'RELEASES_NAME'
         required: true
 jobs:

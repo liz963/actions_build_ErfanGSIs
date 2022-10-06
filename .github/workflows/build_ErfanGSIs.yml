@@ -3,7 +3,7 @@ name: ErfanGSIs-build-AB(debug)
 on: 
   workflow_dispatch:
     inputs:
-      ROM_URL: 'https://coloroswebsitefs.coloros.com/coloroswebsite-coloros-com/grs_20201230225309/R11_11_OTA_1190_all_9h58gh7LU6mR.ozip'
+      ROM_URL:'https://coloroswebsitefs.coloros.com/coloroswebsite-coloros-com/grs_20201230225309/R11_11_OTA_1190_all_9h58gh7LU6mR.ozip'
         description: 'ROM_URL'
         required: true
       ROM_TYPE: 'AB'
